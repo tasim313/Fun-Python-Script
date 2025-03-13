@@ -27,5 +27,5 @@ feedparser==6.0.10
 # Explicitly specify NumPy version
 numpy==1.26.4
 
-
-tkinterdnd==2 0.4.3
+#pip install odfpy
+#tkinterdnd==2 0.4.3
