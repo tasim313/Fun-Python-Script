@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload and Text Extraction</title>
+</head>
+<body>
+    <h1>Upload a File to Extract Text</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="file">Choose a file:</label>
+        <input type="file" name="file" id="file" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if extracted_text %}
+    <h2>Extracted Text:</h2>
+    <pre>{{ extracted_text }}</pre>
+
+    <!-- Hidden form to submit extracted text with download -->
+    <form id="downloadForm" action="/download/csv" method="POST">
+        <input type="hidden" name="extracted_text" id="extracted_text" value="{{ extracted_text }}">
+        <button type="submit">Download as CSV</button>
+    </form>
+
+    <form id="downloadFormXlsx" action="/download/xlsx" method="POST">
+        <input type="hidden" name="extracted_text" id="extracted_text_xlsx" value="{{ extracted_text }}">
+        <button type="submit">Download as XLSX</button>
+    </form>
+
+    <form id="downloadFormOds" action="/download/ods" method="POST">
+        <input type="hidden" name="extracted_text" id="extracted_text_ods" value="{{ extracted_text }}">
+        <button type="submit">Download as ODS</button>
+    </form>
+    {% endif %}
+</body>
+</html>
+
