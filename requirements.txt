@@ -1,0 +1,11 @@
+certifi==2025.1.31
+charset-normalizer==3.4.1
+colorama==0.4.6
+idna==3.10
+plyer==2.1.0
+pyttsx3==2.98
+requests==2.32.3
+urllib3==2.3.0
+beautifulsoup4==4.12.2
+tkinter==8.6
+feedparser==6.0.10
