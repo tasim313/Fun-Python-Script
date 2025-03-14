@@ -30,5 +30,6 @@ numpy==1.26.4
 #pip install odfpy
 #tkinterdnd==2 0.4.3
 
-flask
+opencv-python-headless
 gunicorn
+flask
