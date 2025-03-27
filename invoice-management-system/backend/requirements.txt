@@ -1,0 +1,27 @@
+# Django and Core Packages
+Django==4.2.7
+django-cors-headers==4.3.1  # For handling CORS
+graphene-django==3.1.5      # For GraphQL API
+django-graphql-jwt==0.3.4   # For JWT authentication
+Pillow==10.0.1              # For image processing
+
+# OCR and Image Processing
+opencv-python==4.8.1.78     # For image preprocessing
+pytesseract==0.3.10         # For OCR text extraction
+
+# Database
+psycopg2-binary==2.9.9      # Precompiled PostgreSQL adapter
+
+# Development and Debugging
+django-debug-toolbar==4.2.0 # For debugging
+django-extensions==3.2.3    # Useful Django extensions
+
+# Utilities
+python-dotenv==1.0.0        # For environment variables
+requests==2.31.0            # For HTTP requests (if needed)
+
+# Testing
+pytest==7.4.2               # For testing
+pytest-django==4.5.2        # Django integration for pytest
+
+django-cors-headers
