@@ -1,3 +1,5 @@
+#django framework
+Django==5.2
 # Core OCR and Document Processing
 pytesseract==0.3.10
 opencv-python==4.9.0.80
@@ -31,7 +33,7 @@ numpy==1.26.4
 #tkinterdnd==2 0.4.3
 
 #  Python's paramiko library to connect to your NAS server via SSH 
-pip install paramiko
+#pip install paramiko
 
 #for postgres connection
 #pip install psycopg2-binary
