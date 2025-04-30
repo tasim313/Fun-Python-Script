@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NAS File Viewer</title>
+</head>
+<body>
+    <h1>Available Files</h1>
+    <ul>
+        {% for file in files %}
+            <li><a href="{{ url_for('view_file', filename=file) }}" target="_blank">{{ file }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
