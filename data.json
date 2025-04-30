@@ -1,0 +1,20 @@
+{
+    "Person": [
+        {
+            "name": "Tasim",
+            "skills": [
+                "Web Developer",
+                " DevOps"
+            ],
+            "availability": {},
+            "preferences": {}
+        }
+    ],
+    "Department": [
+        {
+            "name": "Lab",
+            "people": []
+        }
+    ],
+    "Activity": []
+}
