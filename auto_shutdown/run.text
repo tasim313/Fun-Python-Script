@@ -1,0 +1,13 @@
+Make it executable:
+chmod +x install_auto_shutdown.sh
+
+Run it (as root):
+sudo ./install_auto_shutdown.sh
+
+
+What This Script Does
+✅ Installs dependencies (Python, pip, venv)
+✅ Creates a virtual environment (/opt/auto_shutdown_venv)
+✅ Deploys the Python script (/opt/auto_shutdown/auto_shutdown.py)
+✅ Sets up systemd service (auto-starts on boot, logs to /var/log/auto_shutdown/)
+✅ Auto-restarts if crashed (checks every 60 seconds)
