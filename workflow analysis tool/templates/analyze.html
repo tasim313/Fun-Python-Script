@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Data Analysis</h1>
+        
+        <!-- Data Preview -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Data Preview ({{ df.shape[0] }} rows, {{ df.shape[1] }} columns)
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    {{ df.head().to_html(classes="table table-striped") | safe }}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Data Cleaning -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Data Cleaning
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Handle Missing Values:</label>
+                            <select name="handle_missing" class="form-select">
+                                <option value="drop">Drop rows with missing values</option>
+                                <option value="mean">Fill with mean (numeric only)</option>
+                                <option value="median">Fill with median (numeric only)</option>
+                                <option value="mode">Fill with mode</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Handle Outliers:</label>
+                            <select name="outlier_method" class="form-select">
+                                <option value="zscore">Remove using Z-score (default: >3)</option>
+                                <option value="iqr">Remove using IQR</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" name="action" value="clean" class="btn btn-warning">Clean Data</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Descriptive Statistics -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Descriptive Statistics
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Select columns (numeric only):</label>
+                        <select name="columns" class="form-select" multiple size="5">
+                            {% for col in numeric_cols %}
+                                <option value="{{ col }}">{{ col }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" name="action" value="descriptive" class="btn btn-primary">Generate Statistics</button>
+                </form>
+                
+                {% if stats %}
+                <div class="mt-4">
+                    <h5>Results:</h5>
+                    <div class="table-responsive">
+                        {{ stats | safe }}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Inferential Statistics -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Inferential Statistics
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Test Type:</label>
+                            <select name="test_type" class="form-select" required>
+                                <option value="t-test">T-test</option>
+                                <option value="anova">ANOVA</option>
+                                <option value="chi-square">Chi-square</option>
+                                <option value="regression">Regression</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Target Column:</label>
+                            <select name="target_col" class="form-select" required>
+                                {% for col in numeric_cols %}
+                                    <option value="{{ col }}">{{ col }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Group Column (for t-test/anova/chi-square):</label>
+                            <select name="group_col" class="form-select">
+                                <option value="">None</option>
+                                {% for col in categorical_cols %}
+                                    <option value="{{ col }}">{{ col }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Predictor Columns (for regression, comma separated):</label>
+                        <input type="text" name="predictors" class="form-control" placeholder="col1,col2,col3">
+                    </div>
+                    <button type="submit" name="action" value="inferential" class="btn btn-primary">Run Test</button>
+                </form>
+                
+                {% if inferential_results %}
+                <div class="mt-4">
+                    <h5>Results:</h5>
+                    <pre>{{ inferential_results }}</pre>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Visualization -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Data Visualization
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label class="form-label">Plot Type:</label>
+                            <select name="plot_type" class="form-select" required>
+                                <option value="histogram">Histogram</option>
+                                <option value="bar">Bar Chart</option>
+                                <option value="scatter">Scatter Plot</option>
+                                <option value="box">Box Plot</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">X-axis:</label>
+                            <select name="x_col" class="form-select" required>
+                                {% for col in numeric_cols %}
+                                    <option value="{{ col }}">{{ col }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Y-axis (for scatter/bar):</label>
+                            <select name="y_col" class="form-select">
+                                <option value="">None</option>
+                                {% for col in numeric_cols %}
+                                    <option value="{{ col }}">{{ col }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Group By:</label>
+                            <select name="group_col" class="form-select">
+                                <option value="">None</option>
+                                {% for col in categorical_cols %}
+                                    <option value="{{ col }}">{{ col }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" name="action" value="visualize" class="btn btn-primary">Generate Plot</button>
+                </form>
+                
+                {% if plot_path %}
+                <div class="mt-4 text-center">
+                    <img src="{{ url_for('static', filename='plot.png') }}" class="img-fluid" alt="Generated Plot">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Advanced Analytics -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Advanced Analytics
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Analysis Type:</label>
+                            <select name="analysis_type" class="form-select" required>
+                                <option value="cluster">Clustering</option>
+                                <option value="logistic">Logistic Regression</option>
+                                <option value="factor">Factor Analysis</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Target Column (for regression):</label>
+                            <select name="target_col_adv" class="form-select">
+                                <option value="">None</option>
+                                {% for col in numeric_cols %}
+                                    <option value="{{ col }}">{{ col }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Feature Columns (comma separated):</label>
+                            <input type="text" name="feature_cols" class="form-control" placeholder="col1,col2,col3">
+                        </div>
+                    </div>
+                    <button type="submit" name="action" value="advanced" class="btn btn-primary">Run Analysis</button>
+                </form>
+                
+                {% if advanced_results %}
+                <div class="mt-4">
+                    <h5>Results:</h5>
+                    <pre>{{ advanced_results }}</pre>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Export Results -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Export Results
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Export Format:</label>
+                        <select name="output_type" class="form-select" required>
+                            <option value="excel">Excel</option>
+                            <option value="csv">CSV</option>
+                        </select>
+                    </div>
+                    <button type="submit" name="action" value="export" class="btn btn-success">Export Data</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
