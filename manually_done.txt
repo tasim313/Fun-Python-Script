@@ -1,0 +1,101 @@
+✅ Manual Deployment Checklist for scriptpark.xyz
+🛒 1. Purchase & Prepare Domain
+ ✅ Buy domain from HostSeba – e.g., scriptpark.xyz
+
+ 🔁 Login to HostSeba control panel and change nameservers to Cloudflare’s:
+
+Example Cloudflare NS:
+
+ns1.cloudflare.com
+
+ns2.cloudflare.com
+
+☁️ 2. Setup Cloudflare DNS (Required for Automation)
+ ✅ Create a Cloudflare account (if not already): https://dash.cloudflare.com
+
+ ✅ Add your domain (scriptpark.xyz) to Cloudflare
+
+ 🔁 Copy Cloudflare's assigned nameservers
+
+Update these in HostSeba domain panel
+
+ ✅ Create an API Token in Cloudflare with:
+
+Zone → DNS Edit permissions
+
+Zone Settings Read
+
+ ✅ Find your Zone ID under:
+
+Domain → Overview → API → "Zone ID"
+
+ ✅ Save the following securely:
+
+CF_API_TOKEN
+
+CF_ZONE_ID
+
+🖥️ 3. Provision a VPS Server (Ubuntu 20.04 or 22.04)
+ ✅ Purchase a VPS from your preferred provider (e.g., Contabo, Hetzner, DigitalOcean)
+
+ ✅ Ensure it has:
+
+Public static IP
+
+Root SSH access
+
+ ✅ Update server packages:
+
+bash
+Copy
+Edit
+sudo apt update && sudo apt upgrade -y
+🛠️ 4. Prepare Your Application Files
+ ✅ Place your Django project in:
+
+/home/your-user/backend
+
+Virtualenv must be located at /home/your-user/backend/venv/
+
+ ✅ Place your Next.js admin panel in:
+
+/home/your-user/admin-frontend
+
+ ✅ Place your Next.js website in:
+
+/home/your-user/web-frontend
+
+🔐 5. SSH Into Your VPS & Run Script
+ ✅ Copy your deploy.sh script to the server (use scp, rsync, or git)
+
+ ✅ Make it executable:
+
+bash
+Copy
+Edit
+chmod +x deploy.sh
+ ✅ Run the script:
+
+bash
+Copy
+Edit
+./deploy.sh
+🌍 6. After Script Execution – Verify
+Item	How to Verify
+https://api.scriptpark.xyz	Django API loads
+https://admin.scriptpark.xyz	Admin panel loads
+https://www.scriptpark.xyz	Frontend website loads
+HTTPS (SSL)	All links load with a 🔒 Secure HTTPS lock
+DNS	dig admin.scriptpark.xyz returns server IP
+PM2 Apps	pm2 list shows admin-panel, website
+Gunicorn	systemctl status gunicorn = Active (running)
+
+🧠 Optional But Recommended
+ 🔄 Set up backups (PostgreSQL, media files)
+
+ 📧 Configure transactional email (e.g., Mailgun or SMTP)
+
+ 📊 Add monitoring (e.g., UptimeRobot, Netdata)
+
+ 👨‍💻 Set up a CI/CD pipeline (optional for future automation)
+
