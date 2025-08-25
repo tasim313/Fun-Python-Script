@@ -1,0 +1,213 @@
+/* Custom CSS for Bengali News Portal */
+
+/* Font Settings */
+body {
+    font-family: 'SolaimanLipi', 'Kalpurush', Arial, sans-serif;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Kalpurush', 'SolaimanLipi', Arial, sans-serif;
+    font-weight: bold;
+}
+
+/* Color Scheme */
+:root {
+    --primary-red: #c12a2e;
+    --secondary-blue: #1360b3;
+    --dark-grey: #333333;
+    --light-grey: #f1f1f1;
+}
+
+.bg-primary {
+    background-color: var(--primary-red) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-red);
+    border-color: var(--primary-red);
+}
+
+.btn-primary:hover {
+    background-color: #a02226;
+    border-color: #a02226;
+}
+
+.text-primary {
+    color: var(--primary-red) !important;
+}
+
+.bg-secondary {
+    background-color: var(--secondary-blue) !important;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-blue);
+    border-color: var(--secondary-blue);
+}
+
+/* Breaking News Ticker */
+.breaking-news {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ticker-content {
+    animation: ticker 60s linear infinite;
+}
+
+.ticker-item {
+    margin-right: 50px;
+}
+
+@keyframes ticker {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Navigation */
+.navbar-nav .nav-link {
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 4px;
+}
+
+/* Cards */
+.card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: none;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.card-img-top {
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+/* Article Content */
+.article-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.article-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.article-content p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.article-content h2, 
+.article-content h3, 
+.article-content h4 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-red);
+}
+
+/* Comments */
+.comment {
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--primary-red);
+}
+
+/* Section Title */
+.section-title {
+    border-bottom: 3px solid var(--primary-red);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+/* Social Share Buttons */
+.share-buttons .btn {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .breaking-news .ticker-content {
+        animation-duration: 30s;
+    }
+    
+    .card-title {
+        font-size: 0.95rem;
+    }
+    
+    .article-content {
+        font-size: 1rem;
+    }
+}
+
+/* Custom Badge Colors */
+.badge.bg-primary {
+    background-color: var(--primary-red) !important;
+}
+
+.badge.bg-secondary {
+    background-color: var(--secondary-blue) !important;
+}
+
+/* Footer */
+footer a:hover {
+    color: #ffffff !important;
+    text-decoration: underline;
+}
+
+/* Search Results Highlighting */
+.search-highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Image Object Fit Support */
+.object-cover {
+    object-fit: cover !important;
+}
+
+/* Breadcrumb Styling */
+.breadcrumb {
+    background-color: transparent;
+    padding: 0;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: "›";
+    font-size: 1.2rem;
+}

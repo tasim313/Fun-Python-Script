@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}লগইন - বার্তা পোর্টাল{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white text-center">
+                <h4 class="mb-0"><i class="fas fa-sign-in-alt"></i> লগইন</h4>
+            </div>
+            <div class="card-body">
+                {% if form.errors %}
+                <div class="alert alert-danger">
+                    {{ form.errors }}
+                </div>
+                {% endif %}
+                
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="{{ form.username.id_for_label }}" class="form-label">ব্যবহারকারীর নাম</label>
+                        <input type="text" class="form-control" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.password.id_for_label }}" class="form-label">পাসওয়ার্ড</label>
+                        <input type="password" class="form-control" name="{{ form.password.name }}" id="{{ form.password.id_for_label }}" required>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i> লগইন করুন
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="text-center mt-3">
+                    <p class="mb-0">
+                        অ্যাকাউন্ট নেই? 
+                        <a href="{% url 'news:register' %}" class="text-primary">নিবন্ধন করুন</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
