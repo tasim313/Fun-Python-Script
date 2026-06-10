@@ -1,1 +1,0 @@
-{"Person": {"name": "str", "skills": "list", "availability": "dict", "preferences": "dict"}, "Department": {"name": "str", "location": "str", "manager": "str"}, "Activity": {"name": "str", "required_skills": "list", "duration_hours": "int"}}

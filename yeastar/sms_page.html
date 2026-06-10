@@ -1,0 +1,362 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+		<title>TG400 - VoIP Cellular Gateway</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="../css/font/iconfont.css">
+		<script type="text/javascript">
+			var G_OsVer = Math.random();
+			document.write("<link type='text/css' media='all' rel='stylesheet' rev='stylesheet' href='../css/index.css?ver="+G_OsVer+"' />");
+			document.write("<script src='../js/astman.js?ver="+G_OsVer+"'><\/script>");
+			document.write("<script src='../js/jquery.js?ver="+G_OsVer+"'><\/script>");
+			document.write("<script src='../js/oem.js?ver="+G_OsVer+"'><\/script>");
+			document.write("<script src='../js/language.js?ver="+G_OsVer+"'><\/script>");
+			document.write("<script src='../js/mypbx.js?ver="+G_OsVer+"'><\/script>");
+			document.write("<script src='../js/index.js?ver="+G_OsVer+"'><\/script>");
+		</script><link type="text/css" media="all" rel="stylesheet" rev="stylesheet" href="../css/index.css?ver=0.09814395166137535"><script src="../js/astman.js?ver=0.09814395166137535"></script><script src="../js/jquery.js?ver=0.09814395166137535"></script><script src="../js/oem.js?ver=0.09814395166137535"></script><script src="../js/language.js?ver=0.09814395166137535"></script><script src="../js/tooltip_en.js"></script><script src="../js/tip_en.js"></script><script src="../js/product.js?ver=0.2812789881036807"></script><script src="../js/tooltip_en.js"></script><script src="../js/tip_en.js"></script><script src="../js/oem_tooltip.js"></script><script src="../js/mypbx.js?ver=0.09814395166137535"></script><script src="../js/index.js?ver=0.09814395166137535"></script>
+		<link id="favicon_ico_index" rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+	</head>
+	<body>
+		<div class="header">
+		    <div id="logo" class="logo"></div>
+		    <ul id="nav">
+		      <li title="Logout" id=""><a href="#" class="logout" navtitle="logout"><script>document.write(Index_Logout);</script>Logout<div class="current-bg"></div></a></li>
+		      <li class="li_index_gateway" title="Gateway" id=""><a href="#" class="pbx" navtitle="pbx"><script>document.write(Index_configuration);</script>Gateway<div class="current-bg"></div></a></li>
+		      <li title="SMS" id="current"><a href="#" class="sms current icon-over" navtitle="sms"><script>document.write(Index_Message);</script>SMS<div class="current-bg"></div></a></li>
+		      <li class="li_index_system" title="System" id=""><a href="#" class="system" navtitle="system"><script>document.write(Index_System);</script>System<div class="current-bg"></div></a></li>
+		      <li class="li_index_status" title="Status" id=""><a href="#" class="status" navtitle="status"><script>document.write(wel_display_Status);</script>Status<div class="current-bg"></div></a></li>
+		    </ul>  
+	  	</div>
+		<!-- <div id="header">
+			<div id="logo"></div>
+			<div id="nav">
+				<ul>
+			       	<li><a href="#" class="navcss logout" navtitle="logout"><script>document.write(Index_Logout);</script></a></li>
+			       	<li class="li_index_gateway"><a href="#" class="navcss pbx" navtitle="pbx"><script>document.write(Index_configuration);</script></a></li>
+			       	<li><a href="#" class="navcss sms" navtitle="sms"><script>document.write(Index_Message);</script></a></li>
+					<li class="li_index_system"><a href="#" class="navcss system" navtitle="system"><script>document.write(Index_System);</script></a></li>
+		       		<li class="li_index_status"><a href="#" class="navcss status" navtitle="status"><script>document.write(wel_display_Status);</script></a></li>
+		       	</ul>
+			</div>
+		</div> -->
+		<div class="main">
+			<div class="page-title">
+		      <div class="page-title-bg"></div>
+		    </div>
+		    <div class="page-title-tip">
+		    	<div class="caption"><span id="caption" style="line-height:40px;">Send SMS</span></div>
+		      	<div class="feedback"><span id="feedback" style="line-height:40px;" class="spanValidated"></span></div>
+		      	<span class="css_lang">
+		      		<span id="current_lang">English</span>
+		      		<ul class="select_lang" style="display:">
+		      			<li lang="en">English</li>
+						<li lang="zh_CN">简体中文(Chinese Simplified)</li>
+						<li lang="zh_TW">繁體中文(Chinese traditional)</li>
+						<li lang="pt">Português(Portuguese)</li>
+						<li lang="es">Español(Spanish)</li>
+						<li lang="ru">Pусский(Russian)</li>
+						<li lang="iw">עברית(Hebrew)</li>
+						<li lang="tr">Türk(Turkish)</li>
+						<li lang="fr">Française(French)</li>
+						<li lang="de">Deutsch(German)</li>
+						<li lang="it">Italiano(Italian)</li>
+						<li lang="nl">Nederlands(Dutch)</li>
+						<li lang="pl">Polski(Polish)</li>
+						<li lang="ro">Român(Romanian)</li>
+						<li lang="al">Shqiptar(Albanian)</li>
+						<li lang="kr">한국어(Korean)</li>
+						<li lang="th">ไทย(Thai)</li>
+						<li lang="fa">فارسی(Persian)</li>
+						<li lang="hr">Hrvatska(Croatian)</li>
+		      		</ul>
+		      	</span>
+		      	<div class="apply"><span id="applyChanges_Button" class="button_apply" style="display:none;" onclick="ApplyChanges();"><font><script>document.write(Index_ApplyChanges)</script>Apply Changes</font></span></div>
+		    </div>
+			<div id="sidebar" class="page-left">
+	    		<ul id="status" class="menupage" style="display: none;">
+					<li>
+						<div class="menu"><i class="iconfont icon-down_arrow"></i><script>document.write(System_Status);</script>System Status</div>
+						<!-- <a class="expanded"><script>document.write(System_Status);</script></a> -->
+		                <ul class="submenu">
+		                	<li><a id="trunkstatus" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?10102" style="background-color: rgb(255, 255, 255);"><script>document.write(Trunk_Status);</script>Trunk Status</a></li>
+		                    <li><a id="networkstatus" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?13102" style="background-color: rgb(255, 255, 255);"><script>document.write(Network_Status);</script>Network Status</a></li>
+							<li><a id="sysinfo" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?13101" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_SystemInfo);</script>System Info</a></li>
+		                </ul>
+		            </li>
+					<li>
+						<div class="menu"><i class="iconfont icon-down_arrow"></i><script>document.write(Index_Reports);</script>Reports</div>
+						<!-- <a class="expanded"><script>document.write(Index_Reports);</script></a> -->
+		                <ul class="submenu">
+		                    <li><a id="cdr" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?7040" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_CallLogs);</script>Call Logs</a></li>
+		                    <li><a id="syslog" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1400" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_Syslogs);</script>System Logs</a></li>
+		                    <li><a id="troubleshoot" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1410" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_Troubleshoot);</script>Troubleshooting</a></li>
+		                </ul>
+		            </li>  
+				</ul>
+		        <ul id="system" class="menupage" style="display:none">
+					<li>
+						<div class="menu"><i class="iconfont icon-down_arrow"></i><script>document.write(Network_Preferences_Settings);</script>Network Preferences</div>
+						<!-- <a class="expanded"><script>document.write(Network_Preferences_Settings);</script></a> -->
+		                <ul class="submenu">
+		                    <li><a id="lan" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?122111" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_NetworkSettings);</script>Network Settings</a></li>		
+							<!-- <li><a id="vlan"><script>document.write(network_vlan);</script></a></li> -->
+							<li id="li_vpn"><a id="vpn" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?121161" style="background-color: rgb(255, 255, 255);"><script>document.write(network_vpn);</script>OpenVPN</a></li>
+							<li id="li_dyndns"><a id="dyndns" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?121151" style="background-color: rgb(255, 255, 255);"><script>document.write(network_dyndns);</script>DDNS Settings</a></li>
+							<li><a id="staticroute" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?121171" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_staticroute);</script>Static Routes</a></li>
+							<li id="li_snmp" style="display: none;"><a id="snmp" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?121181" style="background-color: rgb(255, 255, 255);"><script>document.write(network_snmp);</script>SNMP Settings</a></li>
+						</ul>
+		            </li>  
+					<li>
+						<div class="menu"><i class="iconfont icon-down_arrow"></i><script>document.write(Index_Security);</script>Security Center</div>
+						<!-- <a class="expanded"><script>document.write(Index_Security);</script></a> -->
+		                <ul class="submenu">
+		                	<li id="li_safe_center"><a id="safe_center" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?122113" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_Security);</script>Security Center</a></li>
+							<li id="li_sysalert"><a id="sysalertsetting" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?132002" style="background-color: rgb(255, 255, 255);"><script>document.write(sysalert_setting);</script>Alert Settings</a></li><li id="li_tlscertificate"><a id="tls_certificate" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?14701" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_TLScertificate);</script>Certificates</a></li>
+							<li><a id="firewall" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/firewall?20001" style="background-color: rgb(255, 255, 255);"><script>document.write(Firewall_Rules);</script>Firewall Rules</a></li>
+		                    <li><a id="firewallblacklist" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/firewall?20002" style="background-color: rgb(255, 255, 255);"><script>document.write(firewall_new_blacklist);</script>IP Blacklist</a></li>
+		                </ul>
+		            </li> 
+		            <li>
+		            	<div class="menu"><i class="iconfont icon-down_arrow"></i><script>document.write(System_Preferences_Settings);</script>System Preferences</div>
+		            	<!-- <a class="expanded"><script>document.write(System_Preferences_Settings);</script></a> -->
+		                <ul class="submenu">
+		                    <li id="li_password"><a id="pwdsetting" href="../html/passwordsettings.html" target="mainscreen" onclick="PageLoading();" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_PasswordSettings);</script>Password Settings</a></li>
+				    		<li><a id="dateandtime" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1251" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_DateandTime);</script>Date and Time</a></li>
+				    		<li id="li_prompts"><a id="prompts" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1071" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_IVRPrompts );</script>Custom Prompts</a></li>
+				    		<li id="li_email"><a id="email" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1201" style="background-color: rgb(255, 255, 255);"><script>document.write(Email_Settings );</script>Email Settings</a></li>
+							<li id="li_firmwareupdate"><a id="firmwareupdate" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1271" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_Firmwareupdate);</script>Firmware Update</a></li>
+							<li id="li_backuprestore"><a id="backuprestore" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1281" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_BackupandRestore);</script>Backup and Restore</a></li>				
+		                	<!-- <li id="li_resetandreboot"><a id="resetreboot"  href="../html/resetandreboot.html" target="mainscreen" onclick="PageLoading();"><script>document.write(Index_ResetandReboot);</script></a></li> -->
+		                	<li id="li_resetandreboot"><a id="resetreboot" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1263" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_ResetandReboot);</script>Reset and Reboot</a></li>
+						</ul>
+		            </li> 
+				</ul>
+				<ul id="sms" class="menupage" style="">
+					<li>
+						<div class="menu"><i class="iconfont icon-down_arrow"></i><script>document.write(Index_Message);</script>SMS</div>
+						<!-- <a class="expanded"><script>document.write(Index_Message);</script></a> -->
+						<ul class="submenu">
+							<li id="li_message_send"><a id="message_send" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?15000" style="background-color: rgb(221, 239, 249);"><script>document.write(Index_Message_Send)</script>Send SMS</a></li>
+							<li id="li_message_sendcont"><a id="message_sendcont" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?15600" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_SMSContacts)</script>SMS Contacts</a></li>
+							<li id="li_message_send_box"><a id="message_send_box" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?15100" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_Message_Send_Box)</script>Outbox</a></li>
+							<li id="li_message_received_box"><a id="message_received_box" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?15200" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_Message_Received_Box)</script>Inbox</a></li>
+							<li id="li_smssettings"><a id="smssettings" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1390" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_SMS)</script>SMS Settings</a></li>
+							<li id="li_smsclear"><a id="smsclear" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?15700" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_SMSClear)</script>SMS Clear Settings</a></li>
+							<li id="li_message_ussd"><a id="message_ussd" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?15300" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_Message_USSD)</script>USSD</a></li>
+                            <li id="li_amisetting"><a id="amisetting" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?14500" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_AmiSettings)</script>API Settings</a></li>
+                            <li id="li_sms_password" style="display: none;"><a id="pwdsetting" href="../html/passwordsettings-sms.html" target="mainscreen" onclick="PageLoading();" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_SMSPassword);</script>SMS User Password</a></li>
+							<li id="li_sms_usermanage" style="display: none;"><a id="sms_usermanage" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?15800" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_UserManage);</script>SMS User Managemengt</a></li> 
+							<li id="li_sms_usersetting"><a id="sms_usersetting" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?14800" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_SMSUser_setting);</script>SMS Account Setting</a></li> 
+                         </ul>
+					</li>
+				</ul>
+	        	<ul id="pbx" class="menupage" style="display:none">
+					<li>
+						<div class="menu"><i class="iconfont icon-down_arrow"></i><script>document.write(Index_Module_List);</script>Mobile List</div>
+						<!-- <a class="expanded"><script>document.write(Index_Module_List);</script></a> -->
+		                <ul class="submenu">
+		                    <li><a id="physicaltrunk" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?10301" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_Module_List);</script>Mobile List</a></li>
+		                    <li id="li_trunkgroup"><a id="modulegroup" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?10400" style="background-color: rgb(255, 255, 255);"><script>document.write(Gsm_group_title);</script>Mobile Group</a></li>
+		                    <!-- <li><a id="module_callwait"><script>document.write(user_display_CallWaiting);</script></a></li>
+							<li><a id="module_callfollowme"><script>document.write(Index_Gsm_Followme);</script></a></li> -->			
+		                </ul>
+		            </li>
+					<li>
+						<div class="menu"><i class="iconfont icon-down_arrow"></i><script>document.write(user_display_VOIP);</script>VoIP Settings</div>
+						<!-- <a class="expanded"><script>document.write(user_display_VOIP);</script></a> -->
+						<ul class="submenu">
+		                    <li id="li_voiptrunk"><a id="voiptrunk" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1510" style="background-color: rgb(255, 255, 255);"><script>document.write(trunk_display_SIPTrunk);</script>VoIP Trunk</a></li>
+		                    <li><a id="trunkgroup" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1520" style="background-color: rgb(255, 255, 255);"><script>document.write(Trunks_group_title)</script>Trunk Group</a></li>
+		                    <li id="li_sipsettings"><a id="sipsetting" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1181" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_SIPSettings);</script>SIP Settings</a></li>
+		                    <li id="li_iaxsettings"><a id="iaxsetting" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1191" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_IAXSettings);</script>IAX Settings</a></li> 
+							<li><a id="option" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1161" style="background-color: rgb(255, 255, 255);"><script>document.write(Options_General);</script>General Preferences</a></li>
+						</ul>
+					</li> 
+					<li>
+						<div class="menu"><i class="iconfont icon-down_arrow"></i><script>document.write(Index_Routes);</script>Routes Settings</div>
+						<!-- <a class="expanded"><script>document.write(Index_Routes);</script></a> -->
+						<ul class="submenu">
+							<li id="li_portability" style="display: none;"><a id="portability" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?160000" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_Portability);</script>Portability</a></li>
+		                    <li><a id="route_mobile2ip" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1500" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_route_mobile2ip);</script>Mobile to IP</a></li>
+							<li><a id="route_ip2mobile" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1600" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_route_ip2mobile);</script>IP to Mobile</a></li>			
+					   		<li><a id="blacklist" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1100" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_BlackList);</script>Blacklist</a></li>
+       						<li id="li_callback"><a id="callback" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1360" style="background-color: rgb(255, 255, 255);"><script>document.write(callback_index);</script>Callback Settings</a></li>
+       						<li id="li_autoclip"><a id="autoclip" onclick="PageLoading();" target="mainscreen" href="http://192.168.1.55/cgi/WebCGI?1550" style="background-color: rgb(255, 255, 255);"><script>document.write(Index_route_autoclip);</script>AutoCLIP Settings</a></li>
+						</ul>
+					</li>  
+				</ul>
+				<ul id="logout" class="menupage" style="display:none">
+					<li>logout</li>
+				</ul>
+			</div>
+			<div id="page-content" class="page-right">
+				<!-- <div class="title">
+					<table width="98%">
+						<tr>
+							<td width="20%"><span id="caption" class="caption"></span></td>
+							<td width="63%" align="center">
+								<span id="feedback" class="feedback"></span>
+							</td>
+							<td align="right">
+								<span id="applyChanges_Button" class="button_apply" style="display:none;" onclick="ApplyChanges();" ><font><script>document.write(Index_ApplyChanges)</script></font></span>
+							</td>
+						</tr>
+					</table>
+				</div> -->
+				<iframe id="mainscreen" name="mainscreen" class="iframeStyle" border="0" frameborder="0" scrolling="no" src="http://192.168.1.55/cgi/WebCGI?15000" height="705px"></iframe>
+				<!--<iframe id="mainscreen" name="mainscreen" onload="this.height=this.contentWindow.document.documentElement.scrollHeight;" border="0" frameborder="0" scrolling="auto"></iframe>
+				<iframe id="mainscreen" name="mainscreen" onload="setHeight();" border="0" frameborder="0" scrolling="auto"></iframe>-->
+			</div>
+		</div>
+		<div id="div-index-copyright" class="copyright">Copyright © 2006-2026 Xiamen Yeastar Digital Technology Co., Ltd. All Rights Reserved.</div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				 // nav title 
+				 $("#nav li:eq(0)").attr("title", Index_Logout);
+				 $("#nav li:eq(1)").attr("title", Index_configuration);
+				 $("#nav li:eq(2)").attr("title", Index_Message);
+				 $("#nav li:eq(3)").attr("title", Index_System);
+				 $("#nav li:eq(4)").attr("title", wel_display_Status);
+				 // end
+				 
+				 $("#sidebar ul.menupage").hide();
+				 $("#nav li:last").attr("id" ,"current");
+				 $("#current a").attr("class","status current");
+				 //$("#sidebar div:first").show();
+				 /*$(".header ul li a").hover(function(){
+				 	// $(".icon-over").removeClass("icon-over");
+				 	$(this).css('icon-over');
+				 });*/
+				 $(".header ul li a").hover(function(){
+				 	$(this).addClass('icon-over');
+				 }, function(){
+				 	$(this).removeClass('icon-over');
+				 });
+
+				 $(".css_lang").click(function(){
+				 	$(this).toggleClass('lang-over');
+				 	/*$(this).addClass('lang-over');
+				 }, function(){
+				 	$(this).removeClass('lang-over');
+				 */});
+				 $(".css_lang").hover(function(){
+				 	// $(this).addClass('lang-over');
+				 }, function(){
+				 	$(this).removeClass('lang-over');
+				 });
+				 /*$(".css_lang").hover(function(){
+				 	$(this).addClass('lang-over');
+				 }, function(){
+				 	$(this).removeClass('lang-over');
+				 });*/
+				 $(".select_lang li").click(function(){
+				 	var language = $(this).attr('lang');
+					ASTGUI.cookies.setCookie("language", language);
+					window.location.reload();
+				 });
+				 
+				 /*<li>
+					<div class="menu"><i class="iconfont icon-down_arrow"></i></div>
+					<ul  class="submenu">
+						<li id="li_portability"><a id="portability"></a></li>
+	                    <li><a id="route_mobile2ip"></a></li>
+						<li><a id="route_ip2mobile"></a></li>			
+				   		<li><a id="blacklist"></li>
+   						<li id="li_callback"><a id="callback"></a></li>
+   						<li id="li_autoclip"><a id="autoclip"></a></li>
+					</ul>
+				</li>*/
+				$(".page-left ul li .menu").click(function() {
+			      $(this).parent().find('ul').slideToggle('medium');
+			      $(this).find('i').toggleClass('icon-arrow').toggleClass('icon-down_arrow');
+			    });
+				 /*$("#sidebar ul li a.collapsed + ul").slideToggle("medium");
+				 $("#sidebar ul li a.collapsed, #sidebar ul li a.expanded").click(function() {
+					$(this).toggleClass('expanded').toggleClass('collapsed').parent().find('ul').slideToggle('medium');
+				 });*/
+				 
+				//$("#sidebar ul.navigation li a ").attr("class","sidebarcss");
+				$("#sidebar ul.submenu li a").click(function() {
+				 	$("#sidebar ul.submenu li a").css('background-color', '#fff');
+				 	$(this).css('background-color', '#ddeff9');
+				 	//$("#sidebar ul.navigation li a ").attr("class","sidebarcss");
+				 	//$(this).attr("class","sidebarcurrent");
+				 	/*$("#sidebar ul li ul li a").css("color", "#000");
+					$("#sidebar ul li ul li a").css("text-decoration", "none");
+					$(this).css("color", "#2597d3");
+					$(this).css("text-decoration", "underline"); */
+				});
+				var strLogoCls = 'logo';
+				var strFavicon = "images/favicon.ico";
+				var strCopyright = Index_copyrights;
+				if(OEMID == 2 || OEMID == 3){
+					strLogoCls = 'logo-mid';
+					strFavicon = '';
+					strCopyright = '';
+				}
+				document.getElementById('favicon_ico_index').href = strFavicon;  
+				document.getElementById('logo').className = strLogoCls;
+				document.getElementById('div-index-copyright').innerHTML = strCopyright;
+				InitPages();
+
+				var sidebarHeight = $("#sidebar").height();
+				document.getElementById("mainscreen").height = sidebarHeight + "px";
+				document.getElementById("page-content").height = sidebarHeight + "px";
+			});
+			
+			$("#nav li a").click(function(e){
+				var defaultReq;
+				switch($(this).attr("navtitle")){
+					case "status": 
+						defaultReq = 10102;
+						break;
+					case "system": 
+						// defaultReq = 121111;
+						defaultReq = 122111;
+						break;
+					case "sms":
+						defaultReq = 15000;
+						break;
+					case "pbx": 
+						defaultReq = 10301;
+						break;
+					case "logout": 
+						defaultReq = 1000;
+						if( confirm(index_sure_logout)) {
+							//ASTGUI.dialog.waitWhile();
+							ASTGUI.cookies.setCookie("loginname", "");
+							ASTGUI.cookies.setCookie("password", "");
+							ASTGUI.cookies.setCookie("OsVer", "");
+							//ASTGUI.cookies.setCookie("language", "");
+							ASTGUI.cookies.setCookie("curUrl", "");
+							ASTGUI.cookies.setCookie("current", "");
+							//ASTGUI.feedback([Index_Logout, ASTGUI.st]);
+							window.location.href = G_SERVER_ROOT;
+						}
+						return;
+						break;
+				}
+				
+				e.preventDefault();
+				$("#sidebar ul.menupage").hide();
+				//$("#sidebar div").slideUp();
+				$("#current a").attr("class",$("#current a").attr('navtitle'));
+				$("#nav li").attr('id' ,"");
+				$(this).parent().attr("id" , "current");
+				$("#current a").attr("class",$("#current a").attr('navtitle')+" current");
+				$('#'+$(this).attr('navtitle')).fadeIn("slow");
+				//$('#'+$(this).attr('title')).slideToggle();
+				ASTGUI.cookies.setCookie("current", $(this).attr('navtitle'));
+				PageLoading();
+				_$("mainscreen").setAttribute("src", make_request_url(G_SERVER_URL, defaultReq));
+				window.frames['mainscreen'].document.location.href = make_request_url(G_SERVER_URL, defaultReq);
+			});
+			window.setInterval("reinitIframe()", 200);
+	  	</script> 
+		<!--[if IE 6]>  
+		<script type="text/javascript" src="../js/DD_belatedPNG_0.0.8a-min.js" ></script>  
+		<script type="text/javascript">  
+			DD_belatedPNG.fix('#logo,.status,.system,.sms,.pbx,.logout');  
+		</script>  
+		<![endif]--> 
+	
+
+<input type="hidden" id="MyPBX_COMM" value="&amp;Info:admin;&amp;MacAddress:f4b549fd69c2;&amp;Extend0908:1;&amp;OSVer:91.3.0.23;&amp;WAN:1;&amp;Series:;&amp;Product:TG100;&amp;AttackAlert:no;" style=""><iframe id="alertiframe" allowtransparency="true" src="http://192.168.1.55/html/guialert.html" frameborder="0" scrolling="no" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 9999; display: none;"></iframe></body></html>

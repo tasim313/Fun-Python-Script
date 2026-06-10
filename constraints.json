@@ -1,1 +1,0 @@
-[{"name": "no_double_shifts", "condition": "same_person_consecutive_days", "action": "reassign"}]
