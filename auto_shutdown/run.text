@@ -1,13 +1,79 @@
-Make it executable:
-chmod +x install_auto_shutdown.sh
+# Bulk Domain Collector - 200K Target
 
-Run it (as root):
-sudo ./install_auto_shutdown.sh
+## 🚀 Quick Start (Just Run It!)
 
+    python3 search.py
 
-What This Script Does
-✅ Installs dependencies (Python, pip, venv)
-✅ Creates a virtual environment (/opt/auto_shutdown_venv)
-✅ Deploys the Python script (/opt/auto_shutdown/auto_shutdown.py)
-✅ Sets up systemd service (auto-starts on boot, logs to /var/log/auto_shutdown/)
-✅ Auto-restarts if crashed (checks every 60 seconds)
+That's it! It will:
+- Auto-search **200 casino/gambling keywords** across 9 categories
+- Run continuously until 200K domains or Ctrl+C
+- Save to `domains.csv`
+- Automatically resume from `domains.csv` if stopped and restarted
+
+## 📋 Usage Examples
+
+    # Run continuously until 200K or Ctrl+C (DEFAULT)
+    python3 search.py
+
+    # Single pass through all keywords once
+    python3 search.py --once
+
+    # Start fresh (ignore existing CSV)
+    python3 search.py --fresh
+
+    # Custom output, 3 pages per keyword, 10s interval
+    python3 search.py -o domains.csv -p 3 -i 10
+
+    # Custom target
+    python3 search.py -t 50000
+
+    # Custom keywords
+    python3 search.py "casino" "poker" "sports betting"
+
+## 🔧 All Options
+
+    -p PAGES       Result pages per keyword (1-5, default: 1)
+    -o OUTPUT      Output CSV file (default: domains.csv)
+    --no-save      Console only, no file save
+    --delay SEC    Delay between requests (default: 2.0s)
+    -i INTERVAL    Seconds between collection rounds (default: 15)
+    -t TARGET      Target unique domains (default: 200000)
+    --once         Single pass through all keywords, then stop
+    --fresh        Ignore existing CSV, start over
+
+## 🔄 Auto-Resume (No Data Loss!)
+
+    # Run for hours, Ctrl+C anytime, restart and continue!
+    python3 search.py    # Run → collects domains → saved to CSV
+    python3 search.py    # Run again → auto-loads previous CSV, keeps adding!
+
+## 📄 Output Format (CSV)
+
+    #,Domain,Found At
+    1,888casino.com,2026-06-10 12:00:00
+    2,pokerstars.com,2026-06-10 12:00:05
+
+## 📦 Default Keywords (200 total, 9 categories)
+
+    1. High-Volume Broad (10)    - casino, online casino, gambling, slots, etc.
+    2. Game & Table (20)         - blackjack, roulette, baccarat, craps, etc.
+    3. Bonus & Registration (20) - free spins, no deposit bonus, welcome bonus, etc.
+    4. Brand & Review (25)       - best casino sites, casino reviews, trusted casinos, etc.
+    5. Location/Country (25)     - casino USA, UK, Canada, Australia, Germany, etc.
+    6. Mobile & Device (20)      - mobile casino, casino apps, play on phone, etc.
+    7. Bonus & Payment (25)      - deposit methods, payout, bonus codes, etc.
+    8. Strategy & How-To (25)    - how to play blackjack, roulette strategy, etc.
+    9. Long-Tail High-Intent (30)- best online slots real money, no deposit casino 2026, etc.
+
+---
+
+# Installation
+
+    pip3 install -r requirements.txt
+
+---
+
+# Auto Shutdown Script
+
+    chmod +x install_auto_shutdown.sh
+    sudo ./install_auto_shutdown.sh
