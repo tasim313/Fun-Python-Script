@@ -41,6 +41,7 @@ numpy==1.26.4
 
 pycups == 2.0.4
 psycopg2 == 2.9.10
+<<<<<<< HEAD
 psycopg2-binary == 2.9.10
 
 #matplotlib
@@ -66,3 +67,6 @@ SQLAlchemy == 2.0.41
 
 #openpyxl 
 openpyxl == 3.1.5
+=======
+psycopg2-binary == 2.9.10
+>>>>>>> origin/main

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Bulk Domain Collector - 200K Target
 
 ## 🚀 Quick Start (Just Run It!)
@@ -77,3 +78,18 @@ That's it! It will:
 
     chmod +x install_auto_shutdown.sh
     sudo ./install_auto_shutdown.sh
+=======
+Make it executable:
+chmod +x install_auto_shutdown.sh
+
+Run it (as root):
+sudo ./install_auto_shutdown.sh
+
+
+What This Script Does
+✅ Installs dependencies (Python, pip, venv)
+✅ Creates a virtual environment (/opt/auto_shutdown_venv)
+✅ Deploys the Python script (/opt/auto_shutdown/auto_shutdown.py)
+✅ Sets up systemd service (auto-starts on boot, logs to /var/log/auto_shutdown/)
+✅ Auto-restarts if crashed (checks every 60 seconds)
+>>>>>>> origin/main
