@@ -1,0 +1,205 @@
+================================================================================
+DATA QUALITY & ENRICHMENT REPORT
+Generated: 2026-06-22 13:08:40
+================================================================================
+
+OVERVIEW
+----------------------------------------
+Total Rows: 5
+Total Columns: 19
+
+COMPLETENESS COMPARISON
+----------------------------------------
+Column                                          Before    After    Delta    Before%     After%
+------------------------------------------------------------------------------------------
+Website URL                                          0        0    +0.0%     100.0%     100.0%
+Domain                                               0        0    +0.0%     100.0%     100.0%
+Name                                                 0        0    +0.0%     100.0%     100.0%
+Site Country                                         0        0    +0.0%     100.0%     100.0%
+Languages                                            5        1   +80.0%       0.0%      80.0%
+Currencies                                           5        1   +80.0%       0.0%      80.0%
+License Type                                         5        5    +0.0%       0.0%       0.0%
+License Type Other                                   5        5    +0.0%       0.0%       0.0%
+License Number                                       3        2   +20.0%      40.0%      60.0%
+IP Address                                           1        0   +20.0%      80.0%     100.0%
+Hosting Provider                                     4        0   +80.0%      20.0%     100.0%
+Nameservers                                          1        0   +20.0%      80.0%     100.0%
+SSL Issuer                                           4        0   +80.0%      20.0%     100.0%
+Payment Processor Names                              5        5    +0.0%       0.0%       0.0%
+Payment Processor Types                              5        1   +80.0%       0.0%      80.0%
+Payment Processor Gateway Domains                    5        5    +0.0%       0.0%       0.0%
+Payment Processor Detection Methods                  5        4   +20.0%       0.0%      20.0%
+Payment Processor Confidence Scores                  5        5    +0.0%       0.0%       0.0%
+Payment Processor Evidence                           5        5    +0.0%       0.0%       0.0%
+------------------------------------------------------------------------------------------
+OVERALL                                                           +25.3%      33.7%      58.9%
+
+ENRICHMENT CHANGES SUMMARY
+----------------------------------------
+Total Changes Made: 24
+
+Changes by Column:
+  Languages                                          4 records updated
+  Currencies                                         4 records updated
+  Payment Processor Types                            4 records updated
+  Hosting Provider                                   4 records updated
+  SSL Issuer                                         4 records updated
+  License Number                                     1 records updated
+  IP Address                                         1 records updated
+  Nameservers                                        1 records updated
+  Payment Processor Detection Methods                1 records updated
+
+Unique Records Modified: 5
+Records Unchanged: 0
+
+SAMPLE CHANGES (First 20)
+----------------------------------------
+  Record: casinoactionbonusfr.com
+  Column: Languages
+  Old Value: nan
+  New Value: German, English, French, Dutch
+  Source: languages
+  Timestamp: 2026-06-22T13:08:40.793760
+
+  Record: casinoactionbonusfr.com
+  Column: Currencies
+  Old Value: nan
+  New Value: AUD, CAD, EUR, JPY, SEK, USD, ZAR
+  Source: currencies
+  Timestamp: 2026-06-22T13:08:40.793977
+
+  Record: casinoactionbonusfr.com
+  Column: License Number
+  Old Value: nan
+  New Value: Pragmatic
+  Source: license_number
+  Timestamp: 2026-06-22T13:08:40.794173
+
+  Record: casinoactionbonusfr.com
+  Column: Payment Processor Types
+  Old Value: nan
+  New Value: Visa, Mastercard, PayPal, Skrill, Neteller, Paysafecard, Cryptocurrency, Interac
+  Source: deposit_methods
+  Timestamp: 2026-06-22T13:08:40.794320
+
+  Record: casinoactionbonusfr.com
+  Column: IP Address
+  Old Value: nan
+  New Value: 104.21.36.198
+  Source: ip_address
+  Timestamp: 2026-06-22T13:08:40.794473
+
+  Record: casinoactionbonusfr.com
+  Column: Nameservers
+  Old Value: nan
+  New Value: byron.ns.cloudflare.com | joyce.ns.cloudflare.com
+  Source: nameservers
+  Timestamp: 2026-06-22T13:08:40.794629
+
+  Record: casinoactionbonusfr.com
+  Column: Hosting Provider
+  Old Value: nan
+  New Value: Cloudflare
+  Source: hosting_provider
+  Timestamp: 2026-06-22T13:08:40.794782
+
+  Record: casinoactionbonusfr.com
+  Column: SSL Issuer
+  Old Value: nan
+  New Value: We1
+  Source: ssl_issuer
+  Timestamp: 2026-06-22T13:08:40.794927
+
+  Record: casinokelly.com
+  Column: Hosting Provider
+  Old Value: Unknown
+  New Value: Bluehost
+  Source: hosting_provider
+  Timestamp: 2026-06-22T13:08:40.795173
+
+  Record: casinokelly.com
+  Column: SSL Issuer
+  Old Value: nan
+  New Value: Yr2
+  Source: ssl_issuer
+  Timestamp: 2026-06-22T13:08:40.795376
+
+  Record: goldeneaglecasino.com
+  Column: Languages
+  Old Value: nan
+  New Value: English
+  Source: languages
+  Timestamp: 2026-06-22T13:08:40.795579
+
+  Record: goldeneaglecasino.com
+  Column: Currencies
+  Old Value: nan
+  New Value: ETH
+  Source: currencies
+  Timestamp: 2026-06-22T13:08:40.795845
+
+  Record: goldeneaglecasino.com
+  Column: Payment Processor Types
+  Old Value: nan
+  New Value: Ethereum
+  Source: deposit_methods
+  Timestamp: 2026-06-22T13:08:40.796062
+
+  Record: goldeneaglecasino.com
+  Column: Payment Processor Detection Methods
+  Old Value: nan
+  New Value: Yes
+  Source: live_chat
+  Timestamp: 2026-06-22T13:08:40.796306
+
+  Record: goldeneaglecasino.com
+  Column: Hosting Provider
+  Old Value: Unknown
+  New Value: Dotster
+  Source: hosting_provider
+  Timestamp: 2026-06-22T13:08:40.796832
+
+  Record: goldeneaglecasino.com
+  Column: SSL Issuer
+  Old Value: nan
+  New Value: We1
+  Source: ssl_issuer
+  Timestamp: 2026-06-22T13:08:40.797077
+
+  Record: kellysuncasino.com
+  Column: Languages
+  Old Value: nan
+  New Value: English
+  Source: languages
+  Timestamp: 2026-06-22T13:08:40.797316
+
+  Record: kellysuncasino.com
+  Column: Currencies
+  Old Value: nan
+  New Value: BTC, ETH
+  Source: currencies
+  Timestamp: 2026-06-22T13:08:40.797534
+
+  Record: kellysuncasino.com
+  Column: Payment Processor Types
+  Old Value: nan
+  New Value: Bitcoin, Ethereum
+  Source: deposit_methods
+  Timestamp: 2026-06-22T13:08:40.797799
+
+  Record: kellysuncasino.com
+  Column: Hosting Provider
+  Old Value: Unknown
+  New Value: GoDaddy
+  Source: hosting_provider
+  Timestamp: 2026-06-22T13:08:40.798265
+
+PROCESSING STATISTICS
+----------------------------------------
+Successfully Enriched Records: 5
+Failed Records: 0
+Enrichment Rate: 100.0%
+
+================================================================================
+END OF REPORT
+================================================================================

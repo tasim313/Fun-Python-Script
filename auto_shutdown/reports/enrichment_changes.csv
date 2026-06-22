@@ -1,0 +1,25 @@
+row_index,record_id,column,old_value,new_value,source,timestamp
+0,casinoactionbonusfr.com,Languages,nan,"German, English, French, Dutch",languages,2026-06-22T13:08:40.793760
+0,casinoactionbonusfr.com,Currencies,nan,"AUD, CAD, EUR, JPY, SEK, USD, ZAR",currencies,2026-06-22T13:08:40.793977
+0,casinoactionbonusfr.com,License Number,nan,Pragmatic,license_number,2026-06-22T13:08:40.794173
+0,casinoactionbonusfr.com,Payment Processor Types,nan,"Visa, Mastercard, PayPal, Skrill, Neteller, Paysafecard, Cryptocurrency, Interac, Trustly, InstaDebit, iDebit",deposit_methods,2026-06-22T13:08:40.794320
+0,casinoactionbonusfr.com,IP Address,nan,104.21.36.198,ip_address,2026-06-22T13:08:40.794473
+0,casinoactionbonusfr.com,Nameservers,nan,byron.ns.cloudflare.com | joyce.ns.cloudflare.com,nameservers,2026-06-22T13:08:40.794629
+0,casinoactionbonusfr.com,Hosting Provider,nan,Cloudflare,hosting_provider,2026-06-22T13:08:40.794782
+0,casinoactionbonusfr.com,SSL Issuer,nan,We1,ssl_issuer,2026-06-22T13:08:40.794927
+1,casinokelly.com,Hosting Provider,Unknown,Bluehost,hosting_provider,2026-06-22T13:08:40.795173
+1,casinokelly.com,SSL Issuer,nan,Yr2,ssl_issuer,2026-06-22T13:08:40.795376
+2,goldeneaglecasino.com,Languages,nan,English,languages,2026-06-22T13:08:40.795579
+2,goldeneaglecasino.com,Currencies,nan,ETH,currencies,2026-06-22T13:08:40.795845
+2,goldeneaglecasino.com,Payment Processor Types,nan,Ethereum,deposit_methods,2026-06-22T13:08:40.796062
+2,goldeneaglecasino.com,Payment Processor Detection Methods,nan,Yes,live_chat,2026-06-22T13:08:40.796306
+2,goldeneaglecasino.com,Hosting Provider,Unknown,Dotster,hosting_provider,2026-06-22T13:08:40.796832
+2,goldeneaglecasino.com,SSL Issuer,nan,We1,ssl_issuer,2026-06-22T13:08:40.797077
+3,kellysuncasino.com,Languages,nan,English,languages,2026-06-22T13:08:40.797316
+3,kellysuncasino.com,Currencies,nan,"BTC, ETH",currencies,2026-06-22T13:08:40.797534
+3,kellysuncasino.com,Payment Processor Types,nan,"Bitcoin, Ethereum",deposit_methods,2026-06-22T13:08:40.797799
+3,kellysuncasino.com,Hosting Provider,Unknown,GoDaddy,hosting_provider,2026-06-22T13:08:40.798265
+3,kellysuncasino.com,SSL Issuer,nan,GoDaddy,ssl_issuer,2026-06-22T13:08:40.798525
+4,gamblingcommission.gov.uk,Languages,nan,English,languages,2026-06-22T13:08:40.798823
+4,gamblingcommission.gov.uk,Currencies,nan,"GBP, TRY",currencies,2026-06-22T13:08:40.799068
+4,gamblingcommission.gov.uk,Payment Processor Types,nan,Debit Card,deposit_methods,2026-06-22T13:08:40.799330
